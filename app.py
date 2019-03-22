@@ -17,5 +17,6 @@ def authorize():
     if request.args.get('code'):
         meli.authorize(request.args.get('code'), request.url_root+'authorize')
     print(meli.access_token)
-    return meli.access_token
+    print(meli.refresh_token)
+    return json.dumps({ "ML_TOKEN": meli.access_token, "ML_REFRESH_TOKEN" : meli.refresh_token })
 
